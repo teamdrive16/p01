@@ -1,3 +1,5 @@
+//https://www.computerhope.com/jargon/a/ascii.htm
+
 #include <iostream>
 #include <string>
 
@@ -73,6 +75,7 @@ BOOL SetConsoleFontSize(short x, short y){
     info.dwFontSize = dwFontSize;
     return SetCurrentConsoleFontEx(output, false, &info);
 }
+
 
 void RemoveScrollbar(){
 	CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo; 
@@ -154,10 +157,10 @@ void DebugResolution(){
 	}
 }
 
-int* UpdateWindow(int index, char key);
+int* UpdateWindow(int ret[]);
 
 int main() {
-	system("color a");
+//	system("color a");
 	SetUpWindow(WIDTH, HEIGHT);
 //	SetConsoleFontSize(20,40);
 	DisableResize();
@@ -173,7 +176,7 @@ int main() {
 	int arr[2] = {index, int(key)};
 	int *ret = arr;
 	while(true){
-		ret = UpdateWindow(ret[0], ret[1]);
+		ret = UpdateWindow(ret);
 	}
 	
 //	for(int i = 0; i < 25; i++){
@@ -200,8 +203,41 @@ int main() {
 	return 0;
 }
 
-int* UpdateWindow(int index, char key){
-	int ret[2] = {index, int(key)};
+void CreateButton(string name, bool selected = false){
+	if(selected){
+		////////////////////////////////////////
+		cout << char(186)<< "       ";
+		cout << char(201);
+		for(int i = 0; i < 20; i++){
+			cout << char(205);
+		}
+		cout << char(187);
+		cout << "        " << char(186) << endl;
+		
+		cout << char(186) << "       ";
+		
+		cout << char(186) << "      "<<name<<"      " << char(186);
+		
+		cout << "        " << char(186) << endl;
+		
+		cout << char(186)<< "       ";
+		cout << char(200);
+		for(int i = 0; i < 20; i++){
+			cout << char(205);
+		}
+		cout << char(188);
+		cout << "        " << char(186) << endl;
+		////////////////////////////////////////
+	}else{
+		cout << char(186) << "                                     " << char(186) << endl;
+		cout << char(186) << "              Contacts               " << char(186) << endl;
+		cout << char(186) << "                                     " << char(186) << endl;
+	}
+}
+
+int* UpdateWindow(int ret[]){
+	int index = ret[0];
+	char key = ret[1];
 	system("cls");
 //	cout << key << endl;
 
@@ -230,63 +266,29 @@ int* UpdateWindow(int index, char key){
 		case 0:
 			//-------------------------------------------------------------------------------------//
 			cout << char(186) << "                                     " << char(186) << endl;
-				////////////////////////////////////////
-			cout << char(186)<< "       ";
-			cout << char(201);
-			for(int i = 0; i < 20; i++){
-				cout << char(205);
-			}
-			cout << char(187);
-			cout << "        " << char(186) << endl;
+			CreateButton("Contacts", 1);
 			
-			cout << char(186) << "       ";
-			
-			cout << char(186) << "      Contacts      " << char(186);
-			
-			cout << "        " << char(186) << endl;
-			
-			cout << char(186)<< "       ";
-			cout << char(200);
-			for(int i = 0; i < 20; i++){
-				cout << char(205);
-			}
-			cout << char(188);
-			cout << "        " << char(186) << endl;
-			////////////////////////////////////////
-			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			//-------------------------------------------------------------------------------------//
 			break;
 		case 1:
 			//-------------------------------------------------------------------------------------//
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-				////////////////////////////////////////
+			CreateButton("Contacts", 0);
+			////////////////////////////////////////
 			cout << char(186)<< "       ";
 			cout << char(201);
 			for(int i = 0; i < 20; i++){
@@ -311,37 +313,25 @@ int* UpdateWindow(int index, char key){
 			////////////////////////////////////////
 			
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			//-------------------------------------------------------------------------------------//
 			break;
 		case 2:
 			//-------------------------------------------------------------------------------------//
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 				////////////////////////////////////////
 			cout << char(186)<< "       ";
@@ -368,37 +358,25 @@ int* UpdateWindow(int index, char key){
 			////////////////////////////////////////
 			
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			//-------------------------------------------------------------------------------------//
 			break;
 		case 3:
 			//-------------------------------------------------------------------------------------//
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
+			CreateButton("Contacts", 0);
+			
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			////////////////////////////////////////
 			cout << char(186)<< "       ";
@@ -425,37 +403,25 @@ int* UpdateWindow(int index, char key){
 			////////////////////////////////////////
 			
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			//-------------------------------------------------------------------------------------//
 			break;
 		case 4:
 			//-------------------------------------------------------------------------------------//
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
+			CreateButton("Contacts", 0);
+			
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			////////////////////////////////////////
 			cout << char(186)<< "       ";
@@ -482,37 +448,25 @@ int* UpdateWindow(int index, char key){
 			////////////////////////////////////////
 			
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			//-------------------------------------------------------------------------------------//
 			break;
 		case 5:
 			//-------------------------------------------------------------------------------------//
 			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
+			CreateButton("Contacts", 0);
+			
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
-			
-			cout << char(186) << "                                     " << char(186) << endl;
-			cout << char(186) << "              Contacts               " << char(186) << endl;
-			cout << char(186) << "                                     " << char(186) << endl;
+			CreateButton("Contacts", 0);
 			cout << char(186) << "                                     " << char(186) << endl;
 			////////////////////////////////////////
 			cout << char(186)<< "       ";
