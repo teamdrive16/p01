@@ -495,7 +495,8 @@ int* UpdateWindow(int ret[]){
 			cout << char(186) << "                                     " << char(186) << endl;
 			//-------------------------------------------------------------------------------------//
 			break;
-	}	
+	}
+	cout << "Test";
 	cout << char(200);
 	for(int i = 0; i < 37; i++){
 		cout<<char(205);
